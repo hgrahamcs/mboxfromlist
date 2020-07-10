@@ -3,7 +3,8 @@ import sys
 import re
 
 
-def get_from(mboxfile, fileout, locallist):
+def get_from(mboxfile, fileout):
+    locallist = []
     mbox = mailbox.mbox(mboxfile)
     for message in mbox:
         frm = message['from']
@@ -22,11 +23,9 @@ def get_from(mboxfile, fileout, locallist):
 
 if __name__ == "__main__":
 
-
-    frmlist = []
     frmfile = open(sys.argv[1]+ "frmlist.txt", "w")
 
-    get_from(sys.argv[1], frmfile, frmlist)
+    get_from(sys.argv[1], frmfile)
 
     frmfile.close()
 
